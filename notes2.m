@@ -60,16 +60,51 @@ ch = get(gca,'Children');
 set(ch(1),'markersize',12)
 set(ch(2),'markerfacecolor','g')
 
+%% multiple lines on one graph
+
+x= 0:pi/100:2*pi;
+y=sin(x);
+z=sin(x/2);
+
+figure, plot(x,y,x,z)
+title('back 2 back')
+
+figure
+plot(x,y+z)
+% hold on
+% plot(x,z)
+title('hold on')
+
+%% general advice
+% cntr + R adds comment blocks
+% cntr + T uncomments blocked comments
+
 %% images
 
-nebula1 = imread('nebula1.jpg');
+n = imread('nebula1.jpg');
+b = imread('bird.jfif');
 
 % three ways to display images
-figure, image( nebula1 )   % 
-figure, imshow( nebula1 )   %
-figure, imagesc( nebula1 )  %
+subplot(2,2,1)
+image( b )  
+title('image')  % 
+
+subplot(2,2,2), imshow( n ) , title('imshow')  %
+
+subplot(2,2,3), imagesc( n ) , title('imagesc') %
+
 % be careful about the format of your images!
+subplot(2,2,4), imagesc(sum(n,3)/3) , title('sum')
 
+%% decrease resolution of image
 
-%% histograms
+n = n(1:5:end, 1:5:end, :);
+imshow(n)
+
+%% be careful about the format of your images!
+sum1= sum(b,3)/3;
+sum2= sum( double(b) ,3)/3;
+
+figure, imagesc([sum1 sum2]) , title('sums')
+
 
