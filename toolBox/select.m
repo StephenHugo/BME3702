@@ -1,7 +1,7 @@
 function [out, pos] = select(in)
 
 % This makes a figure and shows your image
-figure, image( in ), colormap(gray)
+figure, imagesc( sum(in,3) ), colormap(gray)
 
 % click the top left and bottom right corners of the crop region
 pos = floor(ginput(2));
