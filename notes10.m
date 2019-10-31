@@ -18,7 +18,7 @@ set(gcf,'position',[387  305  320  260])
 
 %% use colorSpace
 
-[z, pval] = colorSpace(a);
+z = colorSpace(a);
 set(gcf,'position',[387  305  320  260])
 
 
@@ -34,13 +34,18 @@ set(gcf,'position',[387  305  320  260])
 %%
 b = z<50; % must set thr
 
-one = bwareaopen(b,15);
-two = imfill(one,'holes');
-three = imdilate(two,ones(3));
-four = imerode(three,ones(3));
-figure,imagesc([b four])
+  one = b - bwareaopen(b,150); % threshold objects by size (area)
+  two = imfill(one,'holes'); % fill in holes for binary images
+%   three = imdilate(two,ones(5));
+%   berode = imerode(three,ones(5));
+% figure,imagesc([two.*z ])
 
-stats = regionprops(four,'Area','perimeter');
+for t=1:3
+    a(:,:,t) = a(:,:,t).*two;
+end
+
+figure,imshow(uint8(a))
+% stats = regionprops(four,'Area','perimeter');
 
 
 
