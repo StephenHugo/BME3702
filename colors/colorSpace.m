@@ -1,4 +1,4 @@
-function colorSpace(a)
+function z = colorSpace(a)
 
     step=1;
     
@@ -21,15 +21,14 @@ function colorSpace(a)
             (g(:)-pixelVal(2)).^2 + ...
             (b(:)-pixelVal(3)).^2 );
     
-    nhist(q,15)
+    
     z=zeros(size(r(:,:,1)));
     
-    % anything within thr arbitrary units of intensity shows up
-    thr = 50;
-    z(q<thr)=1;
+    % output distances from selected color
+    z(:)=q;
     
     % check the result
-    figure,imagesc(z),colormap(bone),axis off,set(gca,'position',[0 0 1 1])
+%     figure,imagesc(z),colormap(bone),axis off,set(gca,'position',[0 0 1 1])
 
 
 end

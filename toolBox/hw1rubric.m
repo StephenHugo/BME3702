@@ -1,9 +1,9 @@
 % 5 points in total, be flexible with student variations
 
 % 1 point for correct title and labeled axes
-title('student name')
-xlabel('Radians')
-ylabel('Amplitude')
+% title('student name')
+% xlabel('Radians')
+% ylabel('Amplitude')
 
 
 % 1 point for big bold letters
